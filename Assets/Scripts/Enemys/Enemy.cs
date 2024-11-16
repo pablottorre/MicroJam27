@@ -20,5 +20,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    public void GetDamage(Color color)
+    {
+        
+    }
 }

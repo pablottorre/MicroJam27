@@ -9,7 +9,16 @@ public class TurrentManager : MonoBehaviour
     [SerializeField] private List<Turret> turretsYellow = new List<Turret>();
     [SerializeField] private List<Turret> turretsRed = new List<Turret>();
 
-
+    //Primary
+    public readonly Color BlueColor = new Color32(0, 0, 255, 255);
+    public readonly Color RedColor = new Color32(255, 0, 0, 255);
+    public readonly Color YellowColor = new Color32(255, 255, 0, 255);  
+    
+    //Secondary
+    public readonly Color GreenColor = new Color32(0, 128, 0, 255);
+    public readonly Color OrangeColor = new Color32(255, 165, 0, 255);
+    public readonly Color VioletColor = new Color32(127, 0, 255, 255);
+    
 
     [ContextMenu("bla")]
     public void TestFunc()
