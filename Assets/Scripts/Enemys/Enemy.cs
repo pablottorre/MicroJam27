@@ -37,6 +37,20 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
         }
     }
 
+    public void SetterDoor(GameObject _door)
+    {
+        door = _door;
+    }
+    public void SetterNexus(GameObject _nexus)
+    {
+        nexus = _nexus;
+    }
+
+
+    public void SetColor(Color color)
+    {
+        _color = color;
+    }
 
     public void OnCreateObject(Action<Enemy> returnFunction)
     {
