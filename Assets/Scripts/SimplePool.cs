@@ -12,7 +12,7 @@ public class SimplePool<T> where T : IPoolObject<T>
     {
         _creationFunc = creationProcess;
 
-        for (var i = 0; i < 3; i++)
+        for (var i = 0; i < 8; i++)
         {
             var newItem = _creationFunc();
             newItem.OnCreateObject(ReturnObject);
