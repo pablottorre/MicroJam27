@@ -16,7 +16,7 @@ public class SimplePool<T> where T : IPoolObject<T>
         {
             var newItem = _creationFunc();
             newItem.OnCreateObject(ReturnObject);
-            _availableObjects.Enqueue(newItem);
+            newItem.OnDisableSetUp();
         }
     }
 

@@ -20,18 +20,13 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
 
         if (timer >= timerDeath)
         {
-            GameObject.Destroy(this.gameObject);
+            _onReturnFunction(this);
         }
     }
 
     public void SetColor(Color color)
     {
         _color = color;
-    }
-    
-    public void SetForward(Transform _forward)
-    {
-        transform.forward = _forward.forward;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +49,7 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
 
             enemy.GetDamage(_color);
 
-            //_onReturnFunction(this);
+            _onReturnFunction(this);
         }
     }
 
@@ -67,6 +62,7 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
     {
         transform.position = enablePoint.position;
         transform.rotation = enablePoint.rotation;
+        timer = 0;
         gameObject.SetActive(true);
     }
 
