@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8095035462788905066}
   - component: {fileID: 882420162129436470}
   - component: {fileID: 1764640431249982418}
-  - component: {fileID: 1717031950504494357}
+  - component: {fileID: 7822726349335039318}
   - component: {fileID: 5172064264614193714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,8 +88,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1717031950504494357
-SphereCollider:
+--- !u!65 &7822726349335039318
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,11 +103,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Size: {x: 2.5954013, y: 9.369938, z: 2.5081859}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5172064264614193714
 MonoBehaviour:
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6a2989750425d47b152a9549d4a80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 1
   speed: 1
-  colorNumber: 0
+  colorOwn: {r: 0, g: 0, b: 0, a: 0}
   door: {fileID: 0}
   nexus: {fileID: 0}

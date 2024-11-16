@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected int life;
     [SerializeField] protected float speed;
-    [SerializeField] protected int colorNumber;
+    [SerializeField] protected Color colorOwn;
     [SerializeField] protected GameObject door;
     [SerializeField] protected GameObject nexus;
 
@@ -16,12 +16,19 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(nexus.transform.position.x,transform.position.y, transform.position.z), speed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(nexus.transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
         }
     }
 
     public void GetDamage(Color color)
     {
-        
+        if (color == colorOwn)
+        {
+            life--;
+            if (life <= 0)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
+        }
     }
 }

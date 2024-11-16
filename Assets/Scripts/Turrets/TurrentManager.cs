@@ -26,6 +26,24 @@ public class TurrentManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ShootBlueTurrets();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ShootYellowTurrets();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ShootRedTurrets();
+        }
+    }
+
     #region Turrets
 
     public void AddBlueTurret(Turret newTurret)

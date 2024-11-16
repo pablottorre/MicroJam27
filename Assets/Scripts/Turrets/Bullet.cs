@@ -9,14 +9,29 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
     
     [SerializeField] private float _speed;
 
+    [SerializeField] private float timerDeath;
+    private float timer;
+
     private void Update()
     {
         transform.position += transform.forward * (_speed * Time.deltaTime);
+
+        timer += Time.deltaTime;
+
+        if (timer >= timerDeath)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
     }
 
     public void SetColor(Color color)
     {
         _color = color;
+    }
+    
+    public void SetForward(Transform _forward)
+    {
+        transform.forward = _forward.forward;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,11 +48,13 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
         {
             var enemy = other.gameObject.GetComponent<Enemy>();
 
+            Debug.Log(444);
+
             if (enemy == null) return;
 
             enemy.GetDamage(_color);
 
-            _onReturnFunction(this);
+            //_onReturnFunction(this);
         }
     }
 
