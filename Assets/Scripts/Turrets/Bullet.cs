@@ -34,6 +34,21 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
         _meshRenderer.material.color = (UnityEngine.Color)color;
     }
 
+    public void SetSpeed(float value)
+    {
+        _speed = value;
+    }
+
+    public float GetterSpeed()
+    {
+        return _speed;
+    }
+
+    public Vector3 GetterSize()
+    {
+        return transform.localScale;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.layer)
@@ -53,8 +68,6 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
             case 6:
             {
                 var enemy = other.gameObject.GetComponent<Enemy>();
-
-                Debug.Log(444);
 
                 if (enemy == null) return;
 

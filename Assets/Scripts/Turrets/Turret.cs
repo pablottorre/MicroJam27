@@ -10,7 +10,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float cdTimer;
     private bool canShoot = true;
-    private Vector3 currentScale = new Vector3(1,1,1);
+    private Vector3 currentScale;
+    private float speedBullets;
 
     [SerializeField] private CustomColors.Color _turretColor;
 
@@ -28,6 +29,11 @@ public class Turret : MonoBehaviour
         _meshRenderer.material.color = (UnityEngine.Color)_color;
     }
 
+    private void Start()
+    {
+        currentScale = bullet.GetterSize();
+        speedBullets = bullet.GetterSpeed();
+    }
 
     public void Shoot()
     {
@@ -36,6 +42,7 @@ public class Turret : MonoBehaviour
             SoundManager.instance.PlaySound(SoundID.shoot);
             var bullet = _bulletPool.EnableObject(spawnPoint);
             bullet.gameObject.transform.localScale = currentScale;
+            bullet.SetSpeed(speedBullets);
             bullet.SetColor(_color);
             canShoot = false;
             StartCoroutine(CdShooting());
@@ -56,5 +63,10 @@ public class Turret : MonoBehaviour
     public void ReduceCDUpgrade()
     {
         cdTimer -= (cdTimer * 0.25f);
+    } 
+    
+    public void UpgradeBulletSpeed()
+    {
+        speedBullets += (speedBullets * 0.2f);
     }
 }
