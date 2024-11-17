@@ -22,9 +22,9 @@ namespace CustomColors
             UnityEngine.Color.yellow,
             UnityEngine.Color.red,
             UnityEngine.Color.blue,
-            new(255, 165, 0, 255),
+            new(1.0f, 0.64f, 0.0f, 1f),
             UnityEngine.Color.green,
-            new(238, 130, 238, 255),
+            new(0.47f, 0.16f, 0.55f, 1f),
         };
         
         private int _colorId;
@@ -91,7 +91,7 @@ namespace CustomColors
             _colorId = (int)color;
         }
 
-        public static CustomColor GetRandomColor() => new CustomColor(Random.Range(0,7));
+        public static CustomColor GetRandomColor() => new(Random.Range(1,7));
     }
 }
 
