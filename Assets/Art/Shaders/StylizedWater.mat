@@ -52,7 +52,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DepthBlur: -5.87
-    - _DepthFallOff: 34.48
+    - _DepthFallOff: 172.3
     - _FoamAmount: 20.6
     - _FoamCutOff: 1
     - _FoamScale: -22.39
@@ -67,7 +67,7 @@ Material:
     - _WaveSpeed: 1.11
     - _WaveStrenght: 3.02
     m_Colors:
-    - _DeepColor: {r: 0, g: 0.27313557, b: 0.3584905, a: 1}
+    - _DeepColor: {r: 0.16180134, g: 0.29858696, b: 0.33962262, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _SurfaceColor: {r: 0, g: 0.9233861, b: 1, a: 0}
