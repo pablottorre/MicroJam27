@@ -101,13 +101,17 @@ namespace CustomColors
 
         public static CustomColor GetRandomColor(float chance)
         {
+            var canSpawnMultiColor = Random.value < chance;
+            
             var maxValue = Mathf.RoundToInt(chance * Colors.Length);
             maxValue = Mathf.Clamp(maxValue, 1, Colors.Length);
             
             maxValue = maxValue < 5 ? 4 : maxValue < 8 ? 7 : maxValue;
-            
-            Debug.Log(maxValue);
-            Debug.Log(chance);
+
+            if (maxValue < 5 && canSpawnMultiColor)
+            {
+                maxValue = 7;
+            }
             
             return new CustomColor(Random.Range(1, maxValue));
         }
