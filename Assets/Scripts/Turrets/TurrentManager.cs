@@ -94,6 +94,11 @@ public class TurrentManager : MonoBehaviour
         turretsBlue.IncreaseCurrentScale(new Vector3(amountToIncreaseSize, amountToIncreaseSize, amountToIncreaseSize));
     }
 
+    public void UpgradeCDTimerBlue()
+    {
+        turretsBlue.ReduceCDUpgrade();
+    }
+
     public void ShootYellowTurrets()
     {
         turretsYellow.Shoot();
@@ -103,6 +108,11 @@ public class TurrentManager : MonoBehaviour
     {
         turretsYellow.IncreaseCurrentScale(new Vector3(amountToIncreaseSize, amountToIncreaseSize, amountToIncreaseSize));
     }
+    public void UpgradeCDTimerYellow()
+    {
+        turretsYellow.ReduceCDUpgrade();
+    }
+
 
     public void ShootRedTurrets()
     {
@@ -112,6 +122,11 @@ public class TurrentManager : MonoBehaviour
     {
         turretsRed.IncreaseCurrentScale(new Vector3(amountToIncreaseSize, amountToIncreaseSize, amountToIncreaseSize));
     }
+    public void UpgradeCDTimerRed()
+    {
+        turretsRed.ReduceCDUpgrade();
+    }
+
 
     #endregion
 

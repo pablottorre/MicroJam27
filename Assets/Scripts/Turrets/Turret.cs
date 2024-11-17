@@ -51,4 +51,9 @@ public class Turret : MonoBehaviour
     {
         currentScale += newScale;
     }
+
+    public void ReduceCDUpgrade()
+    {
+        cdTimer -= (cdTimer * 0.25f);
+    }
 }
