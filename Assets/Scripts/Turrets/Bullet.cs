@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using CustomColors;
+using Color = CustomColors.Color;
 
 public class Bullet : MonoBehaviour, IPoolObject<Bullet>
 {
-    [SerializeField] private Color _color;
+    private CustomColor _color;
 
     private Action<Bullet> _onReturnFunction;
     
@@ -11,6 +13,8 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
 
     [SerializeField] private float timerDeath;
     private float timer;
+    
+    [SerializeField] private MeshRenderer _meshRenderer;
 
     private void Update()
     {
@@ -24,32 +28,41 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
         }
     }
 
-    public void SetColor(Color color)
+    public void SetColor(CustomColor color)
     {
         _color = color;
+        _meshRenderer.material.color = (UnityEngine.Color)color;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 11) // Torreta
+        switch (other.gameObject.layer)
         {
-            var turret = other.gameObject.GetComponent<Turret>();
+            // Torreta
+            case 11:
+            {
+                var turret = other.gameObject.GetComponent<Turret>();
 
-            if (turret == null) return;
+                if (turret == null) return;
 
-            _color += turret.Color;
-        }
-        else if (other.gameObject.layer == 6) // Enemy
-        {
-            var enemy = other.gameObject.GetComponent<Enemy>();
+                _color += turret.Color;
+                _meshRenderer.material.color = (UnityEngine.Color)_color;
+                break;
+            }
+            // Enemy
+            case 6:
+            {
+                var enemy = other.gameObject.GetComponent<Enemy>();
 
-            Debug.Log(444);
+                Debug.Log(444);
 
-            if (enemy == null) return;
+                if (enemy == null) return;
 
-            enemy.GetDamage(_color);
+                enemy.GetDamage(_color);
 
-            _onReturnFunction(this);
+                _onReturnFunction(this);
+                break;
+            }
         }
     }
 
@@ -68,7 +81,7 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
 
     public void OnDisableSetUp()
     {
-        _color = Color.white;
+        _color = new CustomColor(Color.None);
         gameObject.SetActive(false);
     }
 }

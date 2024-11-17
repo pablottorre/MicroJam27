@@ -1,3 +1,4 @@
+using CustomColors;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -25,6 +26,6 @@ public class EnemySpawner : MonoBehaviour
         var walkingEnemy = _WalkingPool.EnableObject(spawnPoint);
         walkingEnemy.SetterDoor(door);
         walkingEnemy.SetterNexus(nexus);
-        //walkingEnemy.SetColor();
+        walkingEnemy.SetColor(CustomColor.GetRandomColor());
     }
 }
