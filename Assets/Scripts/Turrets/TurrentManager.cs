@@ -98,6 +98,10 @@ public class TurrentManager : MonoBehaviour
     {
         turretsBlue.ReduceCDUpgrade();
     }
+        public void UpgradeSpeedBlue()
+    {
+        turretsBlue.UpgradeBulletSpeed();
+    }
 
     public void ShootYellowTurrets()
     {
@@ -112,6 +116,10 @@ public class TurrentManager : MonoBehaviour
     {
         turretsYellow.ReduceCDUpgrade();
     }
+    public void UpgradeSpeedYellow()
+    {
+        turretsYellow.UpgradeBulletSpeed();
+    }
 
 
     public void ShootRedTurrets()
@@ -125,6 +133,10 @@ public class TurrentManager : MonoBehaviour
     public void UpgradeCDTimerRed()
     {
         turretsRed.ReduceCDUpgrade();
+    }
+    public void UpgradeSpeedRed()
+    {
+        turretsRed.UpgradeBulletSpeed();
     }
 
 
