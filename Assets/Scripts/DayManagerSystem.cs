@@ -11,6 +11,7 @@ public class DayManagerSystem : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject startOfGamePanel;
+    [SerializeField] private CanvasGroup ingamePanel;
     [SerializeField] private CanvasGroup endDayPanel;
     [SerializeField] private float timerPanel;
     [SerializeField] private TMP_Text endDaysText;
@@ -34,6 +35,9 @@ public class DayManagerSystem : MonoBehaviour
     public void StartOfTheGame()
     {
         startOfGamePanel.SetActive(false);
+        LeanTween.alphaCanvas(ingamePanel, 1, timerPanel);
+        ingamePanel.blocksRaycasts = true;
+        ingamePanel.interactable = true;
         LeanTween.alphaCanvas(endDayPanel, 0, timerPanel);
         endDayPanel.blocksRaycasts = false;
         endDayPanel.interactable = false;
@@ -42,16 +46,18 @@ public class DayManagerSystem : MonoBehaviour
 
     public void ButtonStartNewDay()
     {
-        Debug.Log(45545);
         LeanTween.alphaCanvas(endDayPanel, 0, timerPanel);
         endDayPanel.blocksRaycasts = false;
         endDayPanel.interactable = false;
         EventManager.TriggerEvent(EventNames._OnStartNewDay);
-        
+        LeanTween.alphaCanvas(ingamePanel, 1, timerPanel);
+        ingamePanel.blocksRaycasts = true;
+        ingamePanel.interactable = true;
+
         ButtonSound();
     }
 
-    private void ButtonSound()
+    public void ButtonSound()
     {
         SoundManager.instance.PlaySound(SoundID.button);
     }
