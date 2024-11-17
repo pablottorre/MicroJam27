@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using CustomColors;
 
@@ -6,14 +8,16 @@ public class Turret : MonoBehaviour
 {
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float cdTimer;
+    private bool canShoot = true;
 
-    [SerializeField] private CustomColors.Color _turretColor; 
-    
+    [SerializeField] private CustomColors.Color _turretColor;
+
     private CustomColor _color;
     public CustomColor Color => _color;
 
     private SimplePool<Bullet> _bulletPool;
-    
+
     [SerializeField] private MeshRenderer _meshRenderer;
 
     private void Awake()
@@ -26,7 +30,18 @@ public class Turret : MonoBehaviour
 
     public void Shoot()
     {
-        var bullet = _bulletPool.EnableObject(spawnPoint);
-        bullet.SetColor(_color);
+        if (canShoot)
+        {
+            var bullet = _bulletPool.EnableObject(spawnPoint);
+            bullet.SetColor(_color);
+            canShoot = false;
+            StartCoroutine(CdShooting());
+        }
+    }
+
+    IEnumerator CdShooting()
+    {
+        yield return new WaitForSecondsRealtime(cdTimer);
+        canShoot = true;
     }
 }
