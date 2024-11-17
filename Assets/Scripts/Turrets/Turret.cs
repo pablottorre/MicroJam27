@@ -10,7 +10,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float cdTimer;
     private bool canShoot = true;
-    private Vector3 currentScale;
+    private Vector3 currentScale = new Vector3(1,1,1);
 
     [SerializeField] private CustomColors.Color _turretColor;
 
