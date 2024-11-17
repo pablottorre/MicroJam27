@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
             life--;
             if (life <= 0)
             {
+                EventManager.TriggerEvent(EventNames._OnEnemyDead, this);
                 _onReturnFunction(this);
             }
         }
