@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     [SerializeField] private SkinnedMeshRenderer _baseMeshRenderer;
     
     [SerializeField] private Animator _animator;
+    
+    private bool _isDead = false;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     protected void Update()
     {
+        if(_isDead) return;
+        
         if (door.gameObject.activeInHierarchy)
         {
             if (Vector3.Distance(transform.position, doorPosition) < 8f)
@@ -67,6 +71,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
             SoundManager.instance.PlaySound(SoundID.hitEnemy);
             if (life <= 0)
             {
+                _isDead = true;
                 _animator.SetTrigger("Die");
             }
         }

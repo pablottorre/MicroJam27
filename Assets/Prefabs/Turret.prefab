@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 20, y: 30.518082, z: 20}
+  m_Center: {x: 0, y: 14.759041, z: 0}
 --- !u!114 &4444643244650632092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,11 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e4a64e3610e7f4a966005b4539ac15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1103328088902736782, guid: a4ebfe39f97eed74abdc1c8bae76cb34, type: 3}
+  bullet: {fileID: 173165880090697718, guid: 1dd9e97f858f23e4e9b041f30244841a, type: 3}
   spawnPoint: {fileID: 8774776787654478120}
-  cdTimer: 0
+  cdTimer: 3
   _turretColor: 0
-  _meshRenderer: {fileID: 0}
 --- !u!114 &8209997369912743578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +114,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8682641549944354008}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.59}
+  m_LocalRotation: {x: -0, y: -0.7071059, z: -0, w: 0.7071078}
+  m_LocalPosition: {x: -2.942913, y: 27.370148, z: 0.5900351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1080183366536633145}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
