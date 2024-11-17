@@ -47,6 +47,13 @@ public class DayManagerSystem : MonoBehaviour
         endDayPanel.blocksRaycasts = false;
         endDayPanel.interactable = false;
         EventManager.TriggerEvent(EventNames._OnStartNewDay);
+        
+        ButtonSound();
+    }
+
+    private void ButtonSound()
+    {
+        SoundManager.instance.PlaySound(SoundID.button);
     }
     
     public void EndTheDay(params object[] parameters)
@@ -57,6 +64,8 @@ public class DayManagerSystem : MonoBehaviour
         endDayPanel.interactable = true;
         amountToSpawn++;
         numberDay++;
+        
+        SoundManager.instance.PlaySound(SoundID.winnerBG);
     }
     
     public void EndOfGame(params object[] parameters)
@@ -65,5 +74,7 @@ public class DayManagerSystem : MonoBehaviour
         LeanTween.alphaCanvas(endGamePanel, 1, timerPanel);
         endGamePanel.blocksRaycasts = true;
         endGamePanel.interactable = true;
+        
+        SoundManager.instance.PlaySound(SoundID.loserBG);
     }
 }
