@@ -28,8 +28,6 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     {
         if (door.gameObject.activeInHierarchy)
         {
-            transform.forward = doorPosition - transform.position;
-            
             if (Vector3.Distance(transform.position, doorPosition) < 2f)
             {
                 //animacion para dmg
@@ -40,8 +38,6 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
         }
         else
         {
-            transform.forward = nexusPosition - transform.position;
-            
             if (Vector3.Distance(transform.position, nexusPosition) < 2f)
             {
                 nexus.TakeDamage(1);
