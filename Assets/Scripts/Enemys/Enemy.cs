@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
+using CustomColors;
+using Color = CustomColors.Color;
 
 public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 {
     [SerializeField] protected int life;
     [SerializeField] protected float speed;
-    [SerializeField] protected Color _color;
+    protected CustomColor _color;
     [SerializeField] protected GameObject door;
     [SerializeField] protected GameObject nexus;
-
 
     private Action<Enemy> _onReturnFunction;
 
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
         }
     }
 
-    public void GetDamage(Color color)
+    public void GetDamage(CustomColor color)
     {
         if (color == _color)
         {
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     }
 
 
-    public void SetColor(Color color)
+    public void SetColor(CustomColor color)
     {
         _color = color;
     }
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     public void OnDisableSetUp()
     {
-        _color = Color.white;
+        _color = new CustomColor(Color.None);
         gameObject.SetActive(false);
     }
 

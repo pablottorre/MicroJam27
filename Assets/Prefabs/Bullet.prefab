@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0267491ee05d84b945ef66bc74f5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: {r: 0, g: 0, b: 0, a: 0}
   _speed: 8
   timerDeath: 8
+  _meshRenderer: {fileID: 9187473425762512420}
 --- !u!54 &2287489800545664631
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3362152258021158677}
   - component: {fileID: 7101499415574329340}
   - component: {fileID: 4444643244650632092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,9 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e4a64e3610e7f4a966005b4539ac15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4668821247933432267, guid: a4ebfe39f97eed74abdc1c8bae76cb34, type: 3}
+  bullet: {fileID: 1103328088902736782, guid: a4ebfe39f97eed74abdc1c8bae76cb34, type: 3}
   spawnPoint: {fileID: 8774776787654478120}
-  _color: {r: 0.088113785, g: 1, b: 0, a: 0}
+  _turretColor: 0
+  _meshRenderer: {fileID: 3362152258021158677}
 --- !u!1 &8682641549944354008
 GameObject:
   m_ObjectHideFlags: 0
