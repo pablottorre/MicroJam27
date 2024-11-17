@@ -65,7 +65,7 @@ Material:
     - _Roughness: 1
     - _Speed: 0
     - _WaveSpeed: 1.11
-    - _WaveStrenght: 3.02
+    - _WaveStrenght: 1.25
     m_Colors:
     - _DeepColor: {r: 0.16180134, g: 0.29858696, b: 0.33962262, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}

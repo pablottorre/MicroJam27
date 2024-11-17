@@ -20,13 +20,12 @@ public class Turret : MonoBehaviour
 
     private SimplePool<Bullet> _bulletPool;
 
-    [SerializeField] private MeshRenderer _meshRenderer;
 
     private void Awake()
     {
         _bulletPool = new SimplePool<Bullet>(() => Instantiate(bullet, spawnPoint.position, Quaternion.identity));
         _color = new CustomColor(_turretColor);
-        _meshRenderer.material.color = (UnityEngine.Color)_color;
+
     }
 
     private void Start()
