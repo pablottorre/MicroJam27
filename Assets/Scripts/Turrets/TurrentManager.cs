@@ -60,6 +60,7 @@ public class TurrentManager : MonoBehaviour
             numberTurret++;
             if (numberTurret >= selectedTurret.Count)
                 numberTurret = 0;
+            ActivateOutline();
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -67,9 +68,19 @@ public class TurrentManager : MonoBehaviour
             numberTurret--;
             if (numberTurret < 0)
                 numberTurret = (selectedTurret.Count - 1);
+            ActivateOutline();
         }
 
         #endregion
+    }
+
+    private void ActivateOutline()
+    {
+        for (int i = 0; i < selectedTurret.Count; i++)
+        {
+            selectedTurret[i].GetComponent<Outline>().enabled = false;
+        }
+        selectedTurret[numberTurret].GetComponent<Outline>().enabled = true;
     }
 
     #region Turrets
