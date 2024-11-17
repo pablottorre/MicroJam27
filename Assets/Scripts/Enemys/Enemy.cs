@@ -7,12 +7,20 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 {
     [SerializeField] protected int life;
     [SerializeField] protected float speed;
-    protected CustomColor _color;
+    [SerializeField] protected Color _color;
     [SerializeField] protected GameObject door;
     [SerializeField] protected GameObject nexus;
 
     private Action<Enemy> _onReturnFunction;
+    private CustomColor _customColor;
+    
+    [SerializeField] private MeshRenderer _meshRenderer;
 
+    private void Awake()
+    {
+        _customColor = new CustomColor(_color); 
+        _meshRenderer.material.color = (UnityEngine.Color)_customColor;
+    }
 
     protected void Update()
     {
@@ -28,12 +36,12 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     public void GetDamage(CustomColor color)
     {
-        if (color == _color)
+        if (color == _customColor)
         {
             life--;
             if (life <= 0)
             {
-                GameObject.Destroy(this.gameObject);
+                _onReturnFunction(this);
             }
         }
     }
@@ -50,7 +58,8 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     public void SetColor(CustomColor color)
     {
-        _color = color;
+        _customColor = color;
+        _meshRenderer.material.color = (UnityEngine.Color)_customColor;
     }
 
     public void OnCreateObject(Action<Enemy> returnFunction)
@@ -67,7 +76,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     public void OnDisableSetUp()
     {
-        _color = new CustomColor(Color.None);
+        _customColor = new CustomColor(Color.None);
         gameObject.SetActive(false);
     }
 

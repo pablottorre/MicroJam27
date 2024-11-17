@@ -123,6 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   speed: 1
-  colorOwn: {r: 0, g: 0, b: 0, a: 0}
   door: {fileID: 0}
   nexus: {fileID: 0}
+  _meshRenderer: {fileID: 1764640431249982418}

@@ -1,4 +1,5 @@
 using System;
+using Random = UnityEngine.Random;
 
 namespace CustomColors
 {
@@ -89,6 +90,8 @@ namespace CustomColors
         {
             _colorId = (int)color;
         }
+
+        public static CustomColor GetRandomColor() => new CustomColor(Random.Range(0,7));
     }
 }
 
