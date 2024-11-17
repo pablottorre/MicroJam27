@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace CustomColors
@@ -98,6 +99,17 @@ namespace CustomColors
             _colorId = (int)color;
         }
 
-        public static CustomColor GetRandomColor() => new(Random.Range(1, 7));
+        public static CustomColor GetRandomColor(float chance)
+        {
+            var maxValue = Mathf.RoundToInt(chance * Colors.Length);
+            maxValue = Mathf.Clamp(maxValue, 1, Colors.Length);
+            
+            maxValue = maxValue < 5 ? 4 : maxValue < 8 ? 7 : maxValue;
+            
+            Debug.Log(maxValue);
+            Debug.Log(chance);
+            
+            return new CustomColor(Random.Range(1, maxValue));
+        }
     }
 }

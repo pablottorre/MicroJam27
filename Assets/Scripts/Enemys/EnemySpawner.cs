@@ -26,21 +26,22 @@ public class EnemySpawner : MonoBehaviour
         EventManager.SubscribeToEvent(EventNames._OnEnemyDead, RemoveEnemy);
     }
 
-    public void StartSpawningWalking(int value)
+    public void StartSpawningWalking(int value, int day)
     {
-        StartCoroutine(SpawningCDWalking(value));
+        StartCoroutine(SpawningCDWalking(value, day));
     }
 
-    IEnumerator SpawningCDWalking(int amount)
+    IEnumerator SpawningCDWalking(int amount, int day)
     {
-        for (int i = 0; i < amount; i++)
+        for (var i = 0; i < amount; i++)
         {
-            SpawnEnemyWalking();
+            var actualChance = day / 10f;
+            SpawnEnemyWalking(actualChance);
             yield return new WaitForSecondsRealtime(timerSpawner);
         }
     }
 
-    public void SpawnEnemyWalking()
+    public void SpawnEnemyWalking(float chance)
     {
         var walkingEnemy = _WalkingPool.EnableObject(spawnPoint);
         walkingEnemy.transform.position = new Vector3(walkingEnemy.transform.position.x,
@@ -48,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
             UnityEngine.Random.Range(walkingEnemy.transform.position.z - minZ, walkingEnemy.transform.position.z + maxZ));
         walkingEnemy.SetterDoor(door);
         walkingEnemy.SetterNexus(nexus);
-        walkingEnemy.SetColor(CustomColor.GetRandomColor());
+        walkingEnemy.SetColor(CustomColor.GetRandomColor(chance));
         enemyAlive.Add(walkingEnemy);
     }
 

@@ -28,7 +28,7 @@ public class DayManagerSystem : MonoBehaviour
 
     public void StartNewDay(params object[] parameters)
     {
-        enemySpawners.StartSpawningWalking(amountToSpawn);
+        enemySpawners.StartSpawningWalking(amountToSpawn, numberDay);
     } 
 
     public void StartOfTheGame()
