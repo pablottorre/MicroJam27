@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float cdTimer;
     private bool canShoot = true;
+    private Vector3 currentScale;
 
     [SerializeField] private CustomColors.Color _turretColor;
 
@@ -33,6 +34,7 @@ public class Turret : MonoBehaviour
         if (canShoot)
         {
             var bullet = _bulletPool.EnableObject(spawnPoint);
+            bullet.gameObject.transform.localScale = currentScale;
             bullet.SetColor(_color);
             canShoot = false;
             StartCoroutine(CdShooting());
@@ -43,5 +45,10 @@ public class Turret : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(cdTimer);
         canShoot = true;
+    }
+
+    public void IncreaseCurrentScale(Vector3 newScale)
+    {
+        currentScale += newScale;
     }
 }

@@ -19,12 +19,17 @@ public class TurrentManager : MonoBehaviour
     public readonly Color OrangeColor = new Color32(255, 165, 0, 255);
     public readonly Color VioletColor = new Color32(127, 0, 255, 255);
 
+
+    [Header("Move Turrets")]
     [SerializeField] private float minZ, maxZ;
 
     [SerializeField] private List<GameObject> selectedTurret = new List<GameObject>();
     [SerializeField] private float turretSpeed;
     private int numberTurret = 0;
 
+
+    [Header("Upgrade Stats")]
+    [SerializeField] private float amountToIncreaseSize;
 
 
     private void Update()
@@ -84,15 +89,28 @@ public class TurrentManager : MonoBehaviour
         turretsBlue.Shoot();
     }
 
+    public void UpgradeBlueTurretSize()
+    {
+        turretsBlue.IncreaseCurrentScale(new Vector3(amountToIncreaseSize, amountToIncreaseSize, amountToIncreaseSize));
+    }
+
     public void ShootYellowTurrets()
     {
         turretsYellow.Shoot();
 
     }
+    public void UpgradeYellowTurretSize()
+    {
+        turretsYellow.IncreaseCurrentScale(new Vector3(amountToIncreaseSize, amountToIncreaseSize, amountToIncreaseSize));
+    }
 
     public void ShootRedTurrets()
     {
         turretsRed.Shoot();
+    }
+    public void UpgradeRedTurretSize()
+    {
+        turretsRed.IncreaseCurrentScale(new Vector3(amountToIncreaseSize, amountToIncreaseSize, amountToIncreaseSize));
     }
 
     #endregion
