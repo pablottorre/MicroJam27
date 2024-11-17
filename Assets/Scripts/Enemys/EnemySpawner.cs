@@ -11,8 +11,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private WalkingZombie walkingZombie;
     [SerializeField] private Transform spawnPoint;
 
-    [SerializeField] protected GameObject door;
-    [SerializeField] protected GameObject nexus;
+    [SerializeField] protected Door door;
+    [SerializeField] protected Nexus nexus;
 
     [SerializeField] private float minZ, maxZ;
 
@@ -24,11 +24,6 @@ public class EnemySpawner : MonoBehaviour
     {
         _WalkingPool = new SimplePool<Enemy>(() => Instantiate(walkingZombie, spawnPoint.position, Quaternion.identity));
         EventManager.SubscribeToEvent(EventNames._OnEnemyDead, RemoveEnemy);
-    }
-
-    private void Start()
-    {
-
     }
 
     public void StartSpawningWalking(int value)

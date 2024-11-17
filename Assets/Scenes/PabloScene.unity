@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 212632088}
   - component: {fileID: 212632087}
   - component: {fileID: 212632086}
+  - component: {fileID: 212632090}
   m_Layer: 0
   m_Name: BaseWall
   m_TagString: Untagged
@@ -357,6 +358,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &212632090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212632085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9de1779513d1064ebf926f9d72c3ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 20
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +1912,7 @@ GameObject:
   - component: {fileID: 1537710426}
   - component: {fileID: 1537710425}
   - component: {fileID: 1537710424}
+  - component: {fileID: 1537710428}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Untagged
@@ -1994,6 +2009,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537710428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537710423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad108a0a3aa3eb44a2e627db6f973cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1730882192 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4757687579829342676, guid: 932b18a10e782b747b62a62a0f8b251c, type: 3}
@@ -2604,11 +2631,11 @@ PrefabInstance:
     - target: {fileID: 3624536183435595445, guid: 556085d76dd375a4a8874b8d06df4630, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 212632085}
+      objectReference: {fileID: 212632090}
     - target: {fileID: 3624536183435595445, guid: 556085d76dd375a4a8874b8d06df4630, type: 3}
       propertyPath: nexus
       value: 
-      objectReference: {fileID: 1537710423}
+      objectReference: {fileID: 1537710428}
     - target: {fileID: 6635279282293566117, guid: 556085d76dd375a4a8874b8d06df4630, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

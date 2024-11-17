@@ -1,17 +1,32 @@
+using System;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IDamageable
 {
     public int life;
+    private int healthAmount;
+    private int maxLife;
 
-    public void ReduceLife(int lifeToLose)
+    private void Awake()
     {
-        life -= lifeToLose;
+        healthAmount = life / 4;
+        maxLife = life;
+        EventManager.SubscribeToEvent(EventNames._OnStartNewDay, OnStartNewDay);
+    }
+
+    private void OnStartNewDay(params object[] parameters)
+    {
+        life += healthAmount;
+        life = Mathf.Clamp(life, 0, maxLife);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        life -= damage;
 
         if (life <= 0)
         {
             gameObject.SetActive(false);
         }
     }
-
 }
