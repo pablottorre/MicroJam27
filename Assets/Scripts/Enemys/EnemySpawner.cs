@@ -44,9 +44,10 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemyWalking(float chance)
     {
         var walkingEnemy = _WalkingPool.EnableObject(spawnPoint);
-        walkingEnemy.transform.position = new Vector3(walkingEnemy.transform.position.x,
+        walkingEnemy.transform.position = new Vector3(UnityEngine.Random.Range(walkingEnemy.transform.position.x - minZ, walkingEnemy.transform.position.x + maxZ),
             walkingEnemy.transform.position.y,
-            UnityEngine.Random.Range(walkingEnemy.transform.position.z - minZ, walkingEnemy.transform.position.z + maxZ));
+            walkingEnemy.transform.position.z
+            );
         walkingEnemy.SetterDoor(door);
         walkingEnemy.SetterNexus(nexus);
         walkingEnemy.SetColor(CustomColor.GetRandomColor(chance));

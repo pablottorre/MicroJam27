@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     [SerializeField] protected Color _color;
     [SerializeField] protected Door door;
     [SerializeField] protected Nexus nexus;
-    protected Vector3 doorPosition => new(door.transform.position.x, transform.position.y, transform.position.z);
-    protected Vector3 nexusPosition => new(nexus.transform.position.x, transform.position.y, transform.position.z);
+    protected Vector3 doorPosition => new(transform.position.x, transform.position.y, door.transform.position.z);
+    protected Vector3 nexusPosition => new(transform.position.x, transform.position.y, nexus.transform.position.z);
 
     private Action<Enemy> _onReturnFunction;
     private CustomColor _customColor;
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
                 return;
             }
             
-            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(door.transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(transform.position.x, transform.position.y, door.transform.position.z), speed * Time.deltaTime);
         }
         else
         {
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
                 return;
             }
             
-            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(nexus.transform.position.x, transform.position.y, transform.position.z), speed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(transform.position.x, transform.position.y, nexus.transform.position.z), speed * Time.deltaTime);
         }
     }
 
