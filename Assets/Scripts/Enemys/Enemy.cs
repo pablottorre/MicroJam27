@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 using CustomColors;
+using UnityEngine.Serialization;
 using Color = CustomColors.Color;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 {
@@ -15,36 +17,45 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     private Action<Enemy> _onReturnFunction;
     private CustomColor _customColor;
+
+    [SerializeField] private SkinnedMeshRenderer _colorMeshRenderer;
+
+    [SerializeField] private Material[] _materials;
+
+    [SerializeField] private SkinnedMeshRenderer _baseMeshRenderer;
     
-    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private Animator _animator;
 
     private void Awake()
     {
-        _customColor = new CustomColor(_color); 
-        _meshRenderer.material.color = (UnityEngine.Color)_customColor;
+        _customColor = new CustomColor(_color);
     }
 
     protected void Update()
     {
         if (door.gameObject.activeInHierarchy)
         {
-            if (Vector3.Distance(transform.position, doorPosition) < 2f)
+            if (Vector3.Distance(transform.position, doorPosition) < 8f)
             {
-                //animacion para dmg
+                _animator.SetTrigger("Attacking");
                 return;
             }
-            
-            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(transform.position.x, transform.position.y, door.transform.position.z), speed * Time.deltaTime);
+
+            this.transform.position = Vector3.MoveTowards(this.transform.position,
+                new Vector3(transform.position.x, transform.position.y, door.transform.position.z),
+                speed * Time.deltaTime);
         }
         else
         {
-            if (Vector3.Distance(transform.position, nexusPosition) < 2f)
+            if (Vector3.Distance(transform.position, nexusPosition) < 1f)
             {
                 nexus.TakeDamage(1);
                 return;
             }
-            
-            this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(transform.position.x, transform.position.y, nexus.transform.position.z), speed * Time.deltaTime);
+
+            this.transform.position = Vector3.MoveTowards(this.transform.position,
+                new Vector3(transform.position.x, transform.position.y, nexus.transform.position.z),
+                speed * Time.deltaTime);
         }
     }
 
@@ -56,8 +67,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
             SoundManager.instance.PlaySound(SoundID.hitEnemy);
             if (life <= 0)
             {
-                EventManager.TriggerEvent(EventNames._OnEnemyDead, this);
-                _onReturnFunction(this);
+                _animator.SetTrigger("Die");
             }
         }
     }
@@ -66,6 +76,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     {
         door = _door;
     }
+
     public void SetterNexus(Nexus _nexus)
     {
         nexus = _nexus;
@@ -75,7 +86,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     public void SetColor(CustomColor color)
     {
         _customColor = color;
-        _meshRenderer.material.color = (UnityEngine.Color)_customColor;
+        _colorMeshRenderer.material.color = (UnityEngine.Color)_customColor;
     }
 
     public void OnCreateObject(Action<Enemy> returnFunction)
@@ -87,6 +98,10 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     {
         transform.position = enablePoint.position;
         transform.rotation = enablePoint.rotation;
+
+        var index = Random.Range(0, _materials.Length);
+        _baseMeshRenderer.material = _materials[index];
+
         gameObject.SetActive(true);
     }
 
@@ -100,5 +115,11 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     {
         SoundManager.instance.PlaySound(SoundID.enemyPunch);
         door.TakeDamage(1);
+    }
+    
+    public void OnDeathEvent()
+    {
+        _onReturnFunction(this);
+        EventManager.TriggerEvent(EventNames._OnEnemyDead, this);
     }
 }

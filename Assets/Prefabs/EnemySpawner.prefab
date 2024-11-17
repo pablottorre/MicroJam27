@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSpawner: 2
-  walkingZombie: {fileID: 5172064264614193714, guid: 18a1920214440df4ea08b73a4dfec250, type: 3}
+  walkingZombie: {fileID: -7361919299214980660, guid: 51aeb666bb7472d4fac78c9eb8e6a895, type: 3}
   spawnPoint: {fileID: 6377963777523017408}
   door: {fileID: 0}
   nexus: {fileID: 0}
