@@ -1261,6 +1261,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2047912261359096814, guid: 888bc1d4b42a6e5408c02e4d4247a554, type: 3}
+      propertyPath: turretsRed
+      value: 
+      objectReference: {fileID: 1549412802}
+    - target: {fileID: 2047912261359096814, guid: 888bc1d4b42a6e5408c02e4d4247a554, type: 3}
+      propertyPath: turretsBlue
+      value: 
+      objectReference: {fileID: 1662529641}
+    - target: {fileID: 2047912261359096814, guid: 888bc1d4b42a6e5408c02e4d4247a554, type: 3}
+      propertyPath: turretsYellow
+      value: 
+      objectReference: {fileID: 2123597437}
     - target: {fileID: 2063799634274958884, guid: 888bc1d4b42a6e5408c02e4d4247a554, type: 3}
       propertyPath: m_Name
       value: TurretManager
@@ -1752,6 +1764,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478592014}
   m_CullTransparentMesh: 1
+--- !u!114 &1549412802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444643244650632092, guid: f07652cc34b9d13458cbbc166a053b45, type: 3}
+  m_PrefabInstance: {fileID: 679524279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e4a64e3610e7f4a966005b4539ac15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1662529641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444643244650632092, guid: f07652cc34b9d13458cbbc166a053b45, type: 3}
+  m_PrefabInstance: {fileID: 817649680}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e4a64e3610e7f4a966005b4539ac15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1730882192 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4757687579829342676, guid: 932b18a10e782b747b62a62a0f8b251c, type: 3}
@@ -2235,7 +2269,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2417704757417911423, guid: ccacc66e205a5d140bde89ac4157ff03, type: 3}
       propertyPath: m_Name
-      value: BaseWall
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 2507520254918841281, guid: ccacc66e205a5d140bde89ac4157ff03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2325,6 +2359,17 @@ Transform:
   - {fileID: 979179757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123597437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444643244650632092, guid: f07652cc34b9d13458cbbc166a053b45, type: 3}
+  m_PrefabInstance: {fileID: 2404925771600951627}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e4a64e3610e7f4a966005b4539ac15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1520371505899343280
 PrefabInstance:
   m_ObjectHideFlags: 0
