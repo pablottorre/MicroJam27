@@ -33,6 +33,7 @@ public class Turret : MonoBehaviour
     {
         if (canShoot)
         {
+            SoundManager.instance.PlaySound(SoundID.shoot);
             var bullet = _bulletPool.EnableObject(spawnPoint);
             bullet.gameObject.transform.localScale = currentScale;
             bullet.SetColor(_color);

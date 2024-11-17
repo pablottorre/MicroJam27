@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
         if (color == _customColor)
         {
             life--;
+            SoundManager.instance.PlaySound(SoundID.hitEnemy);
             if (life <= 0)
             {
                 EventManager.TriggerEvent(EventNames._OnEnemyDead, this);
@@ -97,6 +98,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     public void OnAttack()
     {
+        SoundManager.instance.PlaySound(SoundID.enemyPunch);
         door.TakeDamage(1);
     }
 }

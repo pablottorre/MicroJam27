@@ -56,7 +56,7 @@ public class SoundManager : MonoBehaviour
             musicChannel[i] = gameObject.AddComponent<AudioSource>();
             musicChannel[i].clip = music[i];
         }
-        
+
         voiceLineChannel = new AudioSource[voiceLine.Length];
         for (int i = 0; i < voiceLineChannel.Length; i++)
         {
@@ -65,7 +65,7 @@ public class SoundManager : MonoBehaviour
         }
 
     }
-    
+
     #region SOUND
     public int AddSFXSource(AudioSource myAudioSource)
     {
@@ -89,7 +89,7 @@ public class SoundManager : MonoBehaviour
         sfxChannel[(int)id].Play();
         sfxChannel[(int)id].loop = loop;
         sfxChannel[(int)id].volume = volumeSFX;
-        sfxChannel[(int)id].pitch = pitch;  
+        sfxChannel[(int)id].pitch = pitch;
     }
 
     public void PlaySoundByID(int id, bool loop = false, float pitch = 1)
@@ -99,7 +99,7 @@ public class SoundManager : MonoBehaviour
         sfxChannel[id].volume = volumeSFX;
         sfxChannel[id].pitch = pitch;
     }
-    
+
     public void StopSoundByID(int id)
     {
         sfxChannel[id].Stop();
@@ -109,7 +109,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < sfxChannel.Length; i++)
         {
-            if(sfxChannel[i] != null)
+            if (sfxChannel[i] != null)
                 sfxChannel[i].Stop();
         }
     }
@@ -118,7 +118,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < sfxChannel.Length; i++)
         {
-            if(sfxChannel[i] != null)
+            if (sfxChannel[i] != null)
                 sfxChannel[i].Pause();
         }
     }
@@ -127,7 +127,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < sfxChannel.Length; i++)
         {
-            if(sfxChannel[i] != null)
+            if (sfxChannel[i] != null)
                 sfxChannel[i].UnPause();
         }
     }
@@ -164,7 +164,7 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region MUSIC
-    
+
     public bool isMusicPlaying(MusicID id)
     {
         return musicChannel[(int)id].isPlaying;
@@ -181,7 +181,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < musicChannel.Length; i++)
         {
-            if(musicChannel[i] != null)
+            if (musicChannel[i] != null)
                 musicChannel[i].Stop();
         }
     }
@@ -190,7 +190,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < musicChannel.Length; i++)
         {
-            if(musicChannel[i] != null)
+            if (musicChannel[i] != null)
                 musicChannel[i].Pause();
         }
     }
@@ -199,7 +199,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < musicChannel.Length; i++)
         {
-            if(musicChannel[i] != null)
+            if (musicChannel[i] != null)
                 musicChannel[i].UnPause();
         }
     }
@@ -233,11 +233,11 @@ public class SoundManager : MonoBehaviour
         }
         PlayerPrefs.SetFloat("PREFS_VolumeMusic", volume);
     }
-    
+
     #endregion
-    
+
     #region VOICELINES
-    
+
     public int AddVoiceLineSource(AudioSource myAudioSource)
     {
         List<AudioSource> tempList = new List<AudioSource>();
@@ -260,7 +260,7 @@ public class SoundManager : MonoBehaviour
         voiceLineChannel[(int)id].Play();
         voiceLineChannel[(int)id].loop = loop;
         voiceLineChannel[(int)id].volume = volumeSFX;
-        voiceLineChannel[(int)id].pitch = pitch;  
+        voiceLineChannel[(int)id].pitch = pitch;
     }
 
     public void PlayVoiceLineByID(int id, bool loop = false, float pitch = 1)
@@ -314,7 +314,7 @@ public class SoundManager : MonoBehaviour
     {
         voiceLineChannel[(int)id].mute = !voiceLineChannel[(int)id].mute;
     }
-    
+
     /*public void ChangeVolumeVoiceLine(float volume)
     {
         volumeSFX = volume;
@@ -330,12 +330,17 @@ public class SoundManager : MonoBehaviour
 
 public enum SoundID
 {
-  
+    button,
+    hitEnemy,
+    enemyPunch,
+    loserBG,
+    shoot,
+    winnerBG,
 }
 
 public enum MusicID
 {
-   
+    bgMusic,
 }
 
 public enum VoiceLineID
@@ -351,7 +356,7 @@ public enum VoiceLineID
     RADIOMAN_9,
     RADIOMAN_10,
     RADIOMAN_11,
-    RADIOMAN_12,    
+    RADIOMAN_12,
     RADIOMAN_13,
     RADIOMAN_14,
     RADIOMAN_15,
