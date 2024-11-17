@@ -8,13 +8,15 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
     private CustomColor _color;
 
     private Action<Bullet> _onReturnFunction;
-    
+
     [SerializeField] private float _speed;
 
     [SerializeField] private float timerDeath;
     private float timer;
-    
+
     [SerializeField] private MeshRenderer _meshRenderer;
+
+    [SerializeField] private Material _rainbowMaterial;
 
     private void Update()
     {
@@ -31,7 +33,14 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
     public void SetColor(CustomColor color)
     {
         _color = color;
-        _meshRenderer.material.color = (UnityEngine.Color)color;
+        if (color.ColorId != 7)
+        {
+            _meshRenderer.material.color = (UnityEngine.Color)color;
+        }
+        else
+        {
+            _meshRenderer.material = _rainbowMaterial;
+        }
     }
 
     public void SetSpeed(float value)
@@ -61,7 +70,15 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
                 if (turret == null) return;
 
                 _color += turret.Color;
-                _meshRenderer.material.color = (UnityEngine.Color)_color;
+                
+                if (_color.ColorId != 7)
+                {
+                    _meshRenderer.material.color = (UnityEngine.Color)_color;
+                }
+                else
+                {
+                    _meshRenderer.material = _rainbowMaterial;
+                }
                 break;
             }
             // Enemy

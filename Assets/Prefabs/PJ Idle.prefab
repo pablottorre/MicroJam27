@@ -601,6 +601,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 879062d653cd44b4a992e80c59af889f, type: 2}
   _baseMeshRenderer: {fileID: 7154375877194611086}
   _animator: {fileID: 1846831817489432750}
+  _rainbowMaterial: {fileID: 2100000, guid: 95a7ce6cca8f27a4e9217320d4d59625, type: 2}
 --- !u!65 &67678746554064397
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -55,7 +55,7 @@ Material:
     - _DepthFallOff: 172.3
     - _FoamAmount: 20.6
     - _FoamCutOff: 1
-    - _FoamScale: -22.39
+    - _FoamScale: -69
     - _FoamSpeed: 1
     - _QueueControl: 0
     - _QueueOffset: 0

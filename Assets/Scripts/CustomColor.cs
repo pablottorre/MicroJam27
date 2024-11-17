@@ -31,6 +31,8 @@ namespace CustomColors
         };
 
         private int _colorId;
+        
+        public int ColorId => _colorId;
 
         public static CustomColor operator +(CustomColor a, CustomColor b)
         {

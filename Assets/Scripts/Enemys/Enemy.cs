@@ -23,10 +23,12 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     [SerializeField] private Material[] _materials;
 
     [SerializeField] private SkinnedMeshRenderer _baseMeshRenderer;
-    
+
     [SerializeField] private Animator _animator;
-    
+
     private bool _isDead = false;
+
+    [SerializeField] private Material _rainbowMaterial;
 
     private void Awake()
     {
@@ -35,8 +37,8 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
     protected void Update()
     {
-        if(_isDead) return;
-        
+        if (_isDead) return;
+
         if (door.gameObject.activeInHierarchy)
         {
             if (Vector3.Distance(transform.position, doorPosition) < 8f)
@@ -91,7 +93,14 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     public void SetColor(CustomColor color)
     {
         _customColor = color;
-        _colorMeshRenderer.material.color = (UnityEngine.Color)_customColor;
+        if (color.ColorId != 7)
+        {
+            _colorMeshRenderer.material.color = (UnityEngine.Color)_customColor;
+        }
+        else
+        {
+            _colorMeshRenderer.material = _rainbowMaterial;
+        }
     }
 
     public void OnCreateObject(Action<Enemy> returnFunction)
@@ -121,7 +130,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
         SoundManager.instance.PlaySound(SoundID.enemyPunch);
         door.TakeDamage(1);
     }
-    
+
     public void OnDeathEvent()
     {
         _onReturnFunction(this);
