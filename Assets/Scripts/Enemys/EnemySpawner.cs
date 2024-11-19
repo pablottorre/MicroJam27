@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using CustomColors;
+using TMPro;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -19,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
     private SimplePool<Enemy> _WalkingPool;
 
     private List<Enemy> enemyAlive = new List<Enemy>();
+    
+    [SerializeField] private TMP_Text _leftEnemiesText;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawningCDWalking(int amount, int day)
     {
+        _leftEnemiesText.text = $@"Enemies Left: {amount}";
         for (var i = 0; i < amount; i++)
         {
             var actualChance = day / 10f;
@@ -57,6 +61,9 @@ public class EnemySpawner : MonoBehaviour
     public void RemoveEnemy(params object[] parameters)
     {
         enemyAlive.Remove((Enemy)parameters[0]);
+        
+        _leftEnemiesText.text = $@"Enemies Left: {enemyAlive.Count}";
+        
         if (enemyAlive.Count == 0)
         {
             EventManager.TriggerEvent(EventNames._OnEndNewDay);

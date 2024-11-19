@@ -57,5 +57,5 @@ MonoBehaviour:
   sfxChannel: []
   musicChannel: []
   voiceLineChannel: []
-  volumeSFX: 0
-  volumeMusic: 0
+  volumeSFX: 1
+  volumeMusic: 1

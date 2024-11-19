@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DayManagerSystem : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class DayManagerSystem : MonoBehaviour
     
     public void EndTheDay(params object[] parameters)
     {
-        endDaysText.text = numberDay.ToString();
+        //endDaysText.text = numberDay.ToString();
         LeanTween.alphaCanvas(endDayPanel,1, timerPanel);
         endDayPanel.blocksRaycasts = true;
         endDayPanel.interactable = true;
@@ -76,11 +77,16 @@ public class DayManagerSystem : MonoBehaviour
     
     public void EndOfGame(params object[] parameters)
     {
-        endGameDaysText.text = numberDay.ToString();
+        endGameDaysText.text = $"Days Survived: {numberDay}";
         LeanTween.alphaCanvas(endGamePanel, 1, timerPanel);
         endGamePanel.blocksRaycasts = true;
         endGamePanel.interactable = true;
         
         SoundManager.instance.PlaySound(SoundID.loserBG);
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -27,8 +27,11 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
     [SerializeField] private Animator _animator;
 
     private bool _isDead = false;
+    public bool IsDead => _isDead;
 
     [SerializeField] private Material _rainbowMaterial;
+
+    [SerializeField] private ParticleSystem _dmgParticleSystem;
 
     private void Awake()
     {
@@ -73,6 +76,7 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
             SoundManager.instance.PlaySound(SoundID.hitEnemy);
             if (life <= 0)
             {
+                _dmgParticleSystem.Play();
                 _isDead = true;
                 _animator.SetTrigger("Die");
             }
@@ -115,6 +119,8 @@ public class Enemy : MonoBehaviour, IPoolObject<Enemy>
 
         var index = Random.Range(0, _materials.Length);
         _baseMeshRenderer.material = _materials[index];
+
+        _isDead = false;
 
         gameObject.SetActive(true);
     }

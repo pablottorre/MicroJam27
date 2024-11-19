@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -63,7 +64,11 @@ public class SoundManager : MonoBehaviour
             voiceLineChannel[i] = gameObject.AddComponent<AudioSource>();
             voiceLineChannel[i].clip = voiceLine[i];
         }
-
+        
+        ChangeVolumeSound(1);
+        ChangeVolumeMusic(1);
+        
+        PlayMusic(MusicID.bgMusic);
     }
 
     #region SOUND

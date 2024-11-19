@@ -18,6 +18,13 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
 
     [SerializeField] private Material _rainbowMaterial;
 
+    private Material _baseMaterial;
+
+    private void Awake()
+    {
+        _baseMaterial = _meshRenderer.material;
+    }
+
     private void Update()
     {
         transform.position += transform.forward * (_speed * Time.deltaTime);
@@ -35,6 +42,7 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
         _color = color;
         if (color.ColorId != 7)
         {
+            _meshRenderer.material = _baseMaterial;
             _meshRenderer.material.color = (UnityEngine.Color)color;
         }
         else
@@ -86,7 +94,7 @@ public class Bullet : MonoBehaviour, IPoolObject<Bullet>
             {
                 var enemy = other.gameObject.GetComponent<Enemy>();
 
-                if (enemy == null) return;
+                if (enemy == null || enemy.IsDead) return;
 
                 enemy.GetDamage(_color);
 
